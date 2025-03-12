@@ -1,25 +1,27 @@
 import forEach from 'lodash/forEach';
 
-type Manifest = Record<string, ManifestChunk>;
-type ManifestChunk = {
-	assets?: string[];
-	css?: string[];
-	dynamicImports?: string[];
-	file: string;
-	imports?: string[];
-	isDynamicEntry?: boolean;
-	isEntry?: boolean;
-	name?: string;
-	src?: string;
-};
+namespace ViteManifestParser {
+	export type Manifest = Record<string, ManifestChunk>;
+	export type ManifestChunk = {
+		assets?: string[];
+		css?: string[];
+		dynamicImports?: string[];
+		file: string;
+		imports?: string[];
+		isDynamicEntry?: boolean;
+		isEntry?: boolean;
+		name?: string;
+		src?: string;
+	};
+	
+	export type Tags = {
+		links: string[];
+		preloads: string[];
+		scripts: string[];
+	};
+}
 
-type Tags = {
-	links: string[];
-	preloads: string[];
-	scripts: string[];
-};
-
-const parse = (input: Manifest): Tags => {
+const parse = (input: ViteManifestParser.Manifest): ViteManifestParser.Tags => {
 	let links = new Set<string>();
 	let preloads = new Set<string>();
 	let scripts = new Set<string>();
@@ -69,5 +71,5 @@ const parse = (input: Manifest): Tags => {
 	};
 };
 
-export { Manifest, ManifestChunk, Tags };
+export { ViteManifestParser };
 export default parse;
