@@ -13,7 +13,7 @@ namespace ViteManifestParser {
 		name?: string;
 		src?: string;
 	};
-	
+
 	export type Tags = {
 		links: string[];
 		preloads: string[];

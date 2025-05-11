@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import parse from './index';
 
-
 describe('/index', () => {
 	describe('parse function', () => {
 		it('should handle multiple entry points', () => {
